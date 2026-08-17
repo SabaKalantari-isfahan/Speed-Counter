@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Speed Counter</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: "Comic Sans MS", cursive, sans-serif;
+
+            background:
+                radial-gradient(circle at 20% 20%, #ffeaa7 0 8%, transparent 9%),
+                radial-gradient(circle at 80% 30%, #fab1a0 0 6%, transparent 7%),
+                radial-gradient(circle at 30% 80%, #81ecec 0 7%, transparent 8%),
+                linear-gradient(135deg, #6c5ce7, #74b9ff);
+
+            overflow: hidden;
+        }
+
+
+        /* Main Card */
+
+        .game-card {
+            width: 370px;
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            background: #fff;
+
+            border: 5px solid #2d3436;
+            border-radius: 35px;
+
+            box-shadow:
+                12px 12px 0 #2d3436,
+                0 20px 40px rgba(0,0,0,0.2);
+
+            position: relative;
+        }
+
+
+        /* Decorative circles */
+
+        .circle {
+            position: absolute;
+
+            width: 25px;
+            height: 25px;
+
+            border: 4px solid #2d3436;
+            border-radius: 50%;
+        }
+
+        .circle.one {
+            background: #ffeaa7;
+            top: 20px;
+            left: 20px;
+        }
+
+        .circle.two {
+            background: #55efc4;
+            top: 20px;
+            right: 20px;
+        }
+
+
+        /* Title */
+
+        .emoji {
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+            animation: float 2s infinite ease-in-out;
+        }
+
+        .title {
+            font-size: 34px;
+
+            color: #6c5ce7;
+
+            text-shadow: 3px 3px 0 #ffeaa7;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #636e72;
+
+            font-size: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* Counter */
+
+        .counter-box {
+            width: 250px;
+            height: 150px;
+
+            margin: auto;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #ffeaa7;
+
+            border: 5px solid #2d3436;
+            border-radius: 30px;
+
+            box-shadow: 8px 8px 0 #fdcb6e;
+
+            overflow: hidden;
+        }
+
+        #text {
+            font-size: 65px;
+
+            color: #2d3436;
+
+            transition: transform 0.08s;
+        }
+
+        .bounce {
+            animation: bounce 0.12s ease;
+        }
+
+
+        /* Buttons */
+
+        .buttons {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+        }
+
+        button {
+            min-width: 125px;
+
+            padding: 15px 20px;
+
+            border: 4px solid #2d3436;
+            border-radius: 20px;
+
+            font-family: inherit;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 6px 6px 0 #2d3436;
+
+            transition: all 0.15s ease;
+        }
+
+
+        #start {
+            background: #55efc4;
+        }
+
+        #stop {
+            background: #ff7675;
+        }
+
+
+        button:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 8px 10px 0 #2d3436;
+        }
+
+
+        button:active {
+            transform: translateY(4px);
+
+            box-shadow: 2px 2px 0 #2d3436;
+        }
+
+
+        /* Status */
+
+        .status {
+            margin-top: 25px;
+
+            font-size: 14px;
+
+            color: #636e72;
+        }
+
+        #statusText {
+            font-weight: bold;
+
+            color: #00b894;
+        }
+
+
+        /* Animations */
+
+        @keyframes bounce {
+
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 450px) {
+
+            .game-card {
+                width: 90%;
+                padding: 30px 20px;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .counter-box {
+                width: 210px;
+            }
+
+            button {
+                min-width: 110px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="game-card">
+
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+
+
+        <div class="emoji">
+            🎮
+        </div>
+
+
+        <h1 class="title">
+            SPEED COUNTER
+        </h1>
+
+
+        <p class="subtitle">
+            Ready? Let's count! 🚀
+        </p>
+
+
+        <div class="counter-box">
+
+            <h1 id="text">
+                0
+            </h1>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button id="start">
+                ▶ START
+            </button>
+
+            <button id="stop">
+                ⏹ STOP
+            </button>
+
+        </div>
+
+
+        <div class="status">
+            Status:
+            <span id="statusText">
+                Ready
+            </span>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let timerId = null;
+
+        let counter = 0;
+
+        const start = document.querySelector("#start");
+
+        const stop = document.querySelector("#stop");
+
+        const text = document.querySelector("#text");
+
+        const statusText = document.querySelector("#statusText");
+
+
+        // START
+
+        start.addEventListener("click", function () {
+
+            // جلوگیری از چند تایمر همزمان
+            if (timerId !== null) {
+                return;
+            }
+
+            statusText.innerText = "Running 🚀";
+
+            statusText.style.color = "#0984e3";
+
+
+            timerId = setInterval(function () {
+
+                text.innerText = counter;
+
+                counter++;
+
+
+                // Animation
+
+                text.classList.remove("bounce");
+
+                void text.offsetWidth;
+
+                text.classList.add("bounce");
+
+            }, 100);
+
+        });
+
+
+        // STOP
+
+        stop.addEventListener("click", function () {
+
+            clearInterval(timerId);
+
+            timerId = null;
+
+            statusText.innerText = "Stopped 🛑";
+
+            statusText.style.color = "#d63031";
+
+        });
+
+    </script>
+
+</body>
+</html>
