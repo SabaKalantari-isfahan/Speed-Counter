@@ -27,7 +27,7 @@ speed-counter/
 │
 ├── index.html
 ├── README.md
-└── screenshot.png
+└── screenshot.jpeg
 
 🚀 How to Run
 
