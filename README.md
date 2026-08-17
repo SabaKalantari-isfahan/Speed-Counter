@@ -1,34 +1,4 @@
-حتماً. برای GitHub بهتره پروژه‌ات فقط یک index.html نباشه؛ یک README حرفه‌ای هم داشته باشه تا وقتی کسی وارد Repository می‌شه، سریع بفهمه پروژه چیه، با چه تکنولوژی‌هایی ساخته شده و چطور اجراش کنه.
-
-من پیشنهاد می‌کنم ساختار پروژه این باشه:
-
-speed-counter/
-│
-├── index.html
-├── README.md
-└── screenshot.png
-
-1. اسم Repository
-
-مثلاً:
-
-speed-counter
-
-یا اگر می‌خوای حرفه‌ای‌تر و مشخص‌تر باشه:
-
-javascript-speed-counter
-
-2. توضیحات کوتاه Repository
-
-برای قسمت Description گیت‌هاب:
-
-🎮 A fun and interactive speed counter built with HTML, CSS, and JavaScript.
-
-3. README.md
-
-برای پروژه‌ات این README خیلی مناسب می‌شه:
-
-🎮 Speed Counter
+# 🎮 Speed Counter
 
 A fun and interactive counter built with HTML, CSS, and JavaScript.
 
